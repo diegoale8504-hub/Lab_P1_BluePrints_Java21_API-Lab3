@@ -125,7 +125,7 @@ src/main/java/edu/eci/arsw/blueprints
 
 ---
 
-## 📝 Informe de Laboratorio (Solución)
+## Informe de Laboratorio (Solución)
 
 ### 1. Buenas Prácticas de API REST Aplicadas
 Durante el desarrollo de esta API, nos aseguramos de implementar los siguientes estándares y buenas prácticas:
