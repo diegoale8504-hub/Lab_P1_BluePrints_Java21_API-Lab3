@@ -1,14 +1,22 @@
 package edu.eci.arsw.blueprints.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+@Schema(description = "Representación de un plano arquitectónico con autor, nombre y lista de puntos")
 public class Blueprint {
 
+    @Schema(description = "Nombre o identificador del autor del plano", example = "john")
     private String author;
+
+    @Schema(description = "Nombre único del plano para el autor dado", example = "house")
     private String name;
+
+    @Schema(description = "Lista de coordenadas de puntos que componen el plano")
     private final List<Point> points = new ArrayList<>();
 
     public Blueprint(String author, String name, List<Point> pts) {
