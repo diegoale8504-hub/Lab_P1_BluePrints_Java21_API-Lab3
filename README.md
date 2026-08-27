@@ -127,6 +127,19 @@ src/main/java/edu/eci/arsw/blueprints
 
 ## Informe de Laboratorio (Solución)
 
+### 0. Instrucciones de Ejecución
+Para evaluar y probar el proyecto correctamente, por favor sigue estos pasos:
+
+1. **Levantar la Base de Datos:** Abre una terminal en la raíz del proyecto y ejecuta el contenedor de Docker para PostgreSQL:
+   ```bash
+   docker-compose up -d
+   ```
+2. **Ejecutar la Aplicación:** Una vez el contenedor esté corriendo, inicia la aplicación Spring Boot. Esto creará automáticamente las tablas en la base de datos:
+   ```bash
+   mvn spring-boot:run
+   ```
+3. **Probar con Swagger UI:** Ingresa a la interfaz interactiva de OpenAPI en tu navegador para realizar peticiones y consultar la documentación:
+   - [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) *(Nota: Si el puerto 8080 está ocupado, la aplicación puede estar corriendo en el 8081).*
 ### 1. Buenas Prácticas de API REST Aplicadas
 Durante el desarrollo de esta API, nos aseguramos de implementar los siguientes estándares y buenas prácticas:
 - **Versionamiento de URL:** Se estableció la ruta base de los controladores como `/api/v1/blueprints` para permitir futuras evoluciones de la API sin romper la compatibilidad de los clientes actuales.
