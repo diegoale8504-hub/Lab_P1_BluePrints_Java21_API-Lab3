@@ -121,5 +121,33 @@ src/main/java/edu/eci/arsw/blueprints
 
 **Bonus**:  
 
-- Imagen de contenedor (`spring-boot:build-image`).  
 - Métricas con Actuator.  
+
+---
+
+## 📝 Informe de Laboratorio (Solución)
+
+### 1. Buenas Prácticas de API REST Aplicadas
+Durante el desarrollo de esta API, nos aseguramos de implementar los siguientes estándares y buenas prácticas:
+- **Versionamiento de URL:** Se estableció la ruta base de los controladores como `/api/v1/blueprints` para permitir futuras evoluciones de la API sin romper la compatibilidad de los clientes actuales.
+- **Códigos de Estado HTTP Semánticos:** Dependiendo del resultado de cada operación, el servidor responde con el código adecuado (ej: `201 Created` al crear un plano, `202 Accepted` al actualizar agregando un punto, `404 Not Found` cuando un recurso no existe, y `400 Bad Request` en caso de datos inválidos).
+- **Envoltorio de Respuesta (ApiResponse):** Todas las respuestas de la API están encapsuladas en un DTO genérico `ApiResponse<T>`. Esto garantiza que los clientes consuman una estructura predecible (con los campos `code`, `message` y `data`), incluso en casos de error.
+- **Manejo Global de Excepciones:** Se implementó un `@ControllerAdvice` (`GlobalExceptionHandler`) para interceptar errores y convertirlos en el formato de `ApiResponse` de forma limpia sin exponer el stack trace al cliente.
+
+### 2. Migración a PostgreSQL y Docker
+Se migró exitosamente la persistencia de datos (que originalmente residía en memoria) a una base de datos relacional PostgreSQL. Para esto:
+- Se implementaron las entidades JPA `BlueprintEntity`, `BlueprintId` (para llave compuesta) y `PointEmbeddable`.
+- Se reemplazó la implementación por `PostgresBlueprintPersistence` respetando estrictamente el contrato de la interfaz `BlueprintPersistence`.
+- El despliegue de la base de datos se automatizó a través de un archivo `docker-compose.yml`.
+
+### 3. Evidencias de Funcionamiento
+
+**A) Evidencia de Consultas en Swagger UI / OpenAPI**
+![Evidencia Swagger](evidencia_swagger.png)
+
+**B) Evidencia de Mensajes en la Base de Datos PostgreSQL**
+![Evidencia Base de Datos](evidencia_bd.png)
+
+
+### 4. Filtros de Blueprints
+Se mantuvieron e integraron correctamente los filtros de procesamiento de puntos (`RedundancyFilter` y `UndersamplingFilter`), permitiendo modificar la densidad y redundancia de los planos según se requiera al consultar.  
