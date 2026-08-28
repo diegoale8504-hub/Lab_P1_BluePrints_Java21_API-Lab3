@@ -169,13 +169,12 @@ Se mantuvieron e integraron correctamente los filtros de procesamiento de puntos
 A continuación, se detalla el proceso para verificar que el filtro de redundancia (eliminación de puntos duplicados consecutivos) funciona correctamente:
 
 1. **Activar el filtro en configuración:** Se agregó la propiedad `spring.profiles.active=redundancy` en el archivo `application.properties` y se reinició la aplicación.
-   > *(Inserta aquí captura del `application.properties` con la propiedad agregada o la terminal mostrando el perfil activo)*
-   ![Evidencia Perfil Activo]()
+   ![Evidencia Perfil Activo 1]({BDCD7E7B-65E6-4C76-B063-B5ADD21A7ADB}.png)
+   ![Evidencia Perfil Activo 2]({DCDECDFB-AD07-499D-AB63-086883965793}.png)
 
 2. **Crear plano con puntos duplicados:** Mediante Swagger UI, se hizo un POST a `/api/v1/blueprints` creando un plano con puntos seguidos repetidos (ej: (10,10), (10,10), (20,20)).
-   > *(Inserta aquí captura de la petición POST en Swagger UI con los puntos duplicados)*
-   ![Evidencia POST Duplicados]()
+   ![Evidencia POST Duplicados]({3FEAA8FB-00BE-4DE3-AF06-870CAD047ADF}.png)
 
 3. **Consultar plano filtrado:** Al hacer un GET a `/api/v1/blueprints/{author}/{bpname}`, el servidor retorna el plano eliminando la redundancia (ej: retorna solo (10,10), (20,20)).
-   > *(Inserta aquí captura de la respuesta GET en Swagger UI demostrando que el punto duplicado fue eliminado)*
-   ![Evidencia GET Filtrado]()
+   ![Evidencia GET Filtrado 1]({21F831B8-2DC1-409A-9A41-F6F7170EF856}.png)
+   ![Evidencia GET Filtrado 2]({182471FE-9150-428A-B4D0-F5DA9BDA5DEB}.png)
